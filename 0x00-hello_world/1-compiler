@@ -1,2 +1,2 @@
 #!/bin/bash
-gcc comp.c -c comp.o
+gcc main2.c -c main2.o
