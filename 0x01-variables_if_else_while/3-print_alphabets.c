@@ -9,12 +9,12 @@
  */
 int main(void)
 {
-	int alpha = 'a', upper = 'A';
+	int lower = 'a', upper = 'A';
 
-	while (alpha <= 'z')
+	while (lower <= 'z')
 	{
-		putchar(alpha);
-		if (alpha == 'z')
+		putchar(lower);
+		if (lower == 'z')
 		{
 			while (upper <= 'Z')
 			{
@@ -22,8 +22,8 @@ int main(void)
 				upper++;
 			}
 		}
-		alpha++;
+		lower++;
 	}
-	putchar('\n');
-	return (0);
+		putchar('\n');
+		return (0);
 }
