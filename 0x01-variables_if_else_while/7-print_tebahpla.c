@@ -2,17 +2,17 @@
 
 /**
  * main - Entry point
- * this code displays alphabets in lower cases
+ * this code displays alphabets in reverse order
  * Return: always 0 (Success)
  */
 int main(void)
 {
-	int alpha = 'a';
-
-	while (alpha <= 'z')
+	int alpha = 'z';
+	
+	while (alpha >= 'a')
 	{
 		putchar(alpha);
-		alpha++;
+		alpha--;
 	}
 	putchar('\n');
 	return (0);

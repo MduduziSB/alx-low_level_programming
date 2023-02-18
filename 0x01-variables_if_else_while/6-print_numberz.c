@@ -2,18 +2,17 @@
 
 /**
  * main - Entry point
- * this code displays alphabets in lower cases
+ * this code displays numbers 0-9 using putchar
  * Return: always 0 (Success)
  */
 int main(void)
 {
-	int alpha = 'a';
-
-	while (alpha <= 'z')
-	{
-		putchar(alpha);
-		alpha++;
-	}
+	int i = '0';
+	
+	do {
+		putchar(i);
+		i++;
+	} while (i <= '9');
 	putchar('\n');
 	return (0);
 }
