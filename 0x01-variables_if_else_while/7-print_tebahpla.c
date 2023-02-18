@@ -9,12 +9,9 @@
  */
 int main(void)
 {
-	int alpha = 'z';
-	
-	while (alpha >= 'a')
+	for (int alpha = 'z'; alpha >= 'a'; alpha--)
 	{
 		putchar(alpha);
-		alpha--;
 	}
 	putchar('\n');
 	return (0);
