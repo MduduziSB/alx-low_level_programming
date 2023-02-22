@@ -4,7 +4,7 @@
 
 /**
  * print_last_digit - Entry point
- * this code prints numbers in hexadecimal form
+ * this function computes last digit of a number
  * @x: function argument
  * Return: always 0 (Success)
  */
