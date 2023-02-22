@@ -16,7 +16,6 @@ void print_alphabet(void)
 		if (alpha == 'z')
 		{
 			_putchar('\n');
-			_putchar('\n');
 		}
 		alpha++;
 	} while (alpha <= 'z');
