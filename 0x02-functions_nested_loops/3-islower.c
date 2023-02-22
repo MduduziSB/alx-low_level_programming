@@ -8,7 +8,7 @@
  */
 int _islower(int c)
 {
-	int i = 1, tmp = 'a', counter = 0;
+	int tmp = 'a', counter = 0;
 
 	do {
 		if (c == tmp)
