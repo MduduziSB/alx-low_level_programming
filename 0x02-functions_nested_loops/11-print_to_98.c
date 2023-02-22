@@ -12,14 +12,14 @@ void two_digit(int tmp)
 {
 	if (tmp < 0)
 	{
-		putchar('-');
-		putchar((abs(tmp) / 10) + '0');
-		putchar((abs(tmp) % 10) + '0');
+		_putchar('-');
+		_putchar((abs(tmp) / 10) + '0');
+		_putchar((abs(tmp) % 10) + '0');
 	}
 	else
 	{
-		putchar((tmp / 10) + '0');
-		putchar((tmp % 10) + '0');
+		_putchar((tmp / 10) + '0');
+		_putchar((tmp % 10) + '0');
 	}
 }
 /**
@@ -34,18 +34,18 @@ void three_digit(int n)
 
 	if (n > 0)
 	{
-		putchar('-');
-		putchar((abs(n) / 100) + '0');
-		putchar(((n / 10) % 10) + '0');
-		putchar((n % 10) + '0');
+		_putchar((n / 100) + '0');
+		_putchar(((n / 10) % 10) + '0');
+		_putchar((n % 10) + '0');
 	}
 	else
 	{
 		tmp = n % 10;
 		a = n / 10;
-		putchar((abs(n) / 100) + '0');
-		putchar((abs(a) % 10) + '0');
-		putchar(abs(tmp) + '0');
+		_putchar('-');
+		_putchar((abs(n) / 100) + '0');
+		_putchar((abs(a) % 10) + '0');
+		_putchar(abs(tmp) + '0');
 	}
 }
 /**
@@ -72,18 +72,18 @@ void print_to_98(int n)
 		{
 			if (tmp < 0)
 			{
-				putchar('-');
-				putchar(abs(tmp) + '0');
+				_putchar('-');
+				_putchar(abs(tmp) + '0');
 			}
 			else
-				putchar(tmp + '0');
+				_putchar(tmp + '0');
 		}
 		if (tmp == 98)
-			putchar('\n');
+			_putchar('\n');
 		else
 		{
-			putchar(',');
-			putchar(' ');
+			_putchar(',');
+			_putchar(' ');
 		}
 		i++;
 	}
