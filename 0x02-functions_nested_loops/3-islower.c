@@ -4,6 +4,7 @@
 /**
  * _islower - Entry point
  * this code function detects whether character is lowercase or not
+ * @c: function argument
  * Return: always 1 (Success)
  */
 int _islower(int c)
