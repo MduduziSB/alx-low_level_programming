@@ -10,15 +10,17 @@
  */
 int _isalpha(int c)
 {
-	int counter = 0;
+	int up = 'A', low = 'a', counter = 0;
 
-	for (int up = 'A' int low = 'a'; up <= 'Z', low <= 'z'; up++, low++)
+	while (up <= 'Z' || low <= 'z')
 	{
 		if (c == up || c == low)
 		{
 			counter++;
 			break;
 		}
+		up++;
+		low++;
 	}
-	return (c);
+	return (counter);
 }
