@@ -12,11 +12,8 @@ void print_alphabet(void)
 	int alpha = 'a';
 
 	do {
-		putchar(alpha);
-		if (alpha == 'z')
-		{
-			_putchar('\n');
-		}
+		_putchar(alpha);
 		alpha++;
 	} while (alpha <= 'z');
+	_putchar('\n');
 }
