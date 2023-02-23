@@ -21,4 +21,5 @@ int _isupper(int c)
 		tmp++;
 	} while (tmp <= 'Z');
 	return (count);
+	_putchar('\n');
 }
