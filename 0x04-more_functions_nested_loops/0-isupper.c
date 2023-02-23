@@ -3,7 +3,7 @@
 #include "main.h"
 
 /**
- * int _isupper - Entry point
+ * _isupper - Entry point
  * this function detects if a character is an uppercase
  * @c: function argument
  * Return: always 1 (Success) 0 (failure)
@@ -21,5 +21,5 @@ int _isupper(int c)
 		tmp++;
 	} while (tmp <= 'Z');
 	return (count);
-	_putchar('\n');
 }
+
