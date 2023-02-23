@@ -22,4 +22,4 @@ int _isdigit(int c)
 	} while (tmp <= '9');
 	return (count);
 }
-_putchar('\n');
+
