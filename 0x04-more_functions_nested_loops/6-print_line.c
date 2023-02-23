@@ -13,21 +13,16 @@ void print_line(int n)
 
 	if (n <= 0)
 	{
-		_putchar('$');
-		_putchar('\n');
+		putchar('\n');
 	}
 	else
 	{
 		while (k <= n)
 		{
-			_putchar('_');
-			if (k == n)
-			{
-				_putchar('$');
-				_putchar('\n');
-			}
+			putchar('_');
 			k++;
 		}
+		putchar('\n');
 	}
 }
 
