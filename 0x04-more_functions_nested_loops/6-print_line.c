@@ -5,10 +5,12 @@
 /**
  * print_line - Function prints  '_' n times
  * @n: function argument
- * Return: always 0 (Success)
+ * Return: always 0 (success)
  */
 void print_line(int n)
 {
+	int k = 1;
+
 	if (n <= 0)
 	{
 		_putchar('$');
@@ -16,15 +18,15 @@ void print_line(int n)
 	}
 	else
 	{
-		while (n >= 1)
+		while (k <= n)
 		{
 			_putchar('_');
-			if (n == 1)
+			if (k == n)
 			{
 				_putchar('$');
 				_putchar('\n');
 			}
-			n--;
+			k++;
 		}
 	}
 }
