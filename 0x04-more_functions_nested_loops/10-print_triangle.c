@@ -3,51 +3,35 @@
 #include "main.h"
 
 /**
- * spaces - prints spaces
- * @n: function parameter
- * Return: always 0
- */
-void spaces(int n)
-{
-	int k = 1;
-
-	while (k <= n)
-	{
-		putchar(' ');
-		k++;
-	}
-}
-/**
- * print_triangle - prints triangle
- * @size: function parameter
- * Return: always 0
+ * print_triangle - this function prints a triangle using # character
+ * @size: function argument
+ * Return: always 0 (Success)
  */
 void print_triangle(int size)
 {
 	if (size <= 0)
 		_putchar('\n');
-	else if (size == 1)
-	{
-		_putchar('#');
-		_putchar('\n');
-	}
 	else
 	{
-		int k = 1, m = size - 1, l;
+		int i = 1, space, l, m;
 
-		while (k <= size)
-		{
-			l = k;
-			spaces(m);
-			while (l >= 1)
+		do {
+			m = size - i;
+			space = 1;
+			l = 1;
+			while (space <= m)
+			{
+				_putchar(' ');
+				space++;
+			}
+			while (l <= i)
 			{
 				_putchar('#');
-				l--;
+				l++;
 			}
 			_putchar('\n');
-			m--;
-			k++;
-		}
+			i++;
+		} while (i <= size);
 	}
 }
 
