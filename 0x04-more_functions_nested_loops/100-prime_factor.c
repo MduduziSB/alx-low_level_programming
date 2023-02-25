@@ -22,7 +22,7 @@ void largest_prime_factor(void)
 			largest = i;
 			num = num / i;
 		}
-		i = i + 3;
+		i = i + 2;
 	}
 	if (num > 2)
 		largest = num;
