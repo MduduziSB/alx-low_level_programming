@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
 #include "main.h"
 
 /**
@@ -16,9 +15,9 @@ void largest_prime_factor(void)
 		largest = 2;
 		num = num / 2;
 	}
-	while (i <= sqrt(num))
+	while (i * i <= num)
 	{
-		while (num % 3 == 0)
+		while (num % i == 0)
 		{
 			largest = i;
 			num = num / i;
