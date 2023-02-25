@@ -8,7 +8,7 @@
  */
 void largest_prime_factor(void)
 {
-	unsigned long long int largest, num = 612852475143, i = 3;
+	unsigned long int largest, num = 612852475143, i = 3;
 
 	while (num % 2 == 0)
 	{
@@ -26,7 +26,7 @@ void largest_prime_factor(void)
 	}
 	if (num > 2)
 		largest = num;
-	printf("%llu\n", largest);
+	printf("%lu\n", largest);
 }
 /**
  * main - displays largest prime factor
