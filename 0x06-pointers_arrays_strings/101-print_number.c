@@ -42,7 +42,7 @@ unsigned int size(unsigned int n)
  */
 void print_number(int n)
 {
-	unsigned int num, num0, i, m, j;
+	unsigned int num, num0, i, m;
 
 	if (n < 0)
 	{
