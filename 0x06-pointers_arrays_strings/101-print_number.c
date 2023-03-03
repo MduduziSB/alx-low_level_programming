@@ -3,60 +3,74 @@
 #include "main.h"
 
 /**
+ * ten - multiplies by ten
+ * @n:parameter
+ * Return: number
+ */
+int ten(int n)
+{
+	int i = n, j = 1;
+
+	while (i >= 1)
+	{
+		j *= 10;
+		i--;
+	}
+	return (j);
+}
+/**
+ * size - computes integer length
+ * @n: parameter
+ * Return: number
+ */
+unsigned int size(unsigned int n)
+{
+	unsigned int num = n, i = 0;
+
+	while (num >= 1)
+	{
+		i++;
+		num /= 10;
+	}
+	return (i);
+}
+
+/**
  * print_number - prints an integer
  * @n: parameter
  * Return: always 0 (success)
  */
 void print_number(int n)
 {
-        unsigned int num = 0;
-        int i = 0, count = 0;
+	unsigned int num, num0, i, m, j;
 
 	if (n < 0)
+	{
+		_putchar('-');
 		num = -n;
+	}
 	else
 		num = n;
-	do {
-		count++;
-		num /= 10;
-	} while (num > 0);
-	num = n;
-	if (num >= 0 && num <= 9)
-		putchar(num + '0');
-	else if (num >= -9 && < 0)
+	num0 = num;
+	if (num < 10)
+		_putchar(num + '0');
+	else
 	{
-		putchar('-');
-		putchar((-1 * num) + '0');
-	}
-	else if (num >= 10)
-	{
-		int s[40];
-		while (count > 0)
+		i = size(num);
+		m = i;
+		while (i >= 1)
 		{
-			s[count] = num % 10;
-			num = num - num % 10;
-			num = num / 10;
-			count--;
-			i++;
+			if (i == m)
+				_putchar((num0 / ten(i - 1)) + '0');
+			else if (i > 1 && i < m)
+			{
+				num = num0 / ten(i - 1);
+				_putchar((num % 10) + '0');
+			}
+			else
+				_putchar((num0 % 10) + '0');
+			i--;
 		}
-		s[count] = 0;
-		while (i > 0)	
-
-        while (s[i] != '\0')
-        {
-                if (s[i] == '-')
-                        count++;
-                if (s[i] >= '0' && s[i] <= '9')
-                {
-                        num = num * 10 + (s[i] - '0');
-                        if (s[i + 1] > '9' || s[i + 1] < '0')
-                                break;
-                }
-                i++;
-        }
-        if (count % 2 == 0)
-                return (num);
-        else
-                return (-num);
+	}
 }
 
