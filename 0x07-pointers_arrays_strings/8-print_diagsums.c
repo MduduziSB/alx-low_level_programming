@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "main.h"
 
-void print_diagsums(int *a, int size)
+void print_diagsums(int (*a)[size], int size)
 {
     int i = 0, sumx = 0, sumy = 0, j, k = size - 1;
     int **p, (*ptr)[size];
