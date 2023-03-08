@@ -6,17 +6,14 @@
  * @n: integer
  * Return: 0 (failure) 1 (success)
  */
-int prime( int i, int n)
+int prime(int i, int n)
 {
 	if (i == n - 1)
 		return (1);
+	if (n % i == 0)
+		return (0);
 	else
-	{
-		if (n % i == 0)
-			return (0);
-		else
-			prime(i + 1, n);
-	}
+		return (prime(i + 1, n));
 }
 /**
  * is_prime_number - checks if number is a prime
