@@ -4,7 +4,7 @@
  * square - computes square of a number
  * @i: iteration
  * @n: integer
- * Returns: -1 (failure) + number (success)
+ * Return: integer
  */
 int square(int i, int n)
 {
