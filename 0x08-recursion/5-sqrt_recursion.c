@@ -34,3 +34,4 @@ int _sqrt_recursion(int n)
 	else
 		return (square(2, n));
 }
+
