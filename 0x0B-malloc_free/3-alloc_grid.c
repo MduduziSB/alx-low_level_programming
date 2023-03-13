@@ -31,6 +31,6 @@ int **alloc_grid(int width, int height)
 		}
 		ix++;
 	}
-	return ((char **)ptr);
+	return ((int **)ptr);
 }
 
