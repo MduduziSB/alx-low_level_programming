@@ -19,6 +19,11 @@ char *strcp(char *str1, char *str2)
 	str1[i] = str2[i];
 	return (str1);
 }
+/**
+ * len - finds string length
+ * @str: string
+ * Return: string
+ */
 int len(char *str)
 {
 	int i = 0;
