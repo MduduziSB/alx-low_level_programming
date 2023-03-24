@@ -12,12 +12,12 @@ void display(char *str, int nbyt)
 
 	while (i < nbyt)
 	{
-		if (i == nbyt - 1)
-			printf("%.2hhx\n", str[i]);
-		else
-			printf("%.2hhx ", str[i]);
+		printf("%.2hhx", str[i]);
+		if (i < nbyt - 1)
+			printf(" ");
 		i++;
 	}
+	printf("\n");
 }
 /**
  * main - prints opcodes of main function
