@@ -27,13 +27,14 @@ void display(char *str, int nbyt)
  */
 int main(int argc, char **argv)
 {
-	int nbyte = atoi(argv[1]);
+	int nbyte;
 
 	if (argc != 2)
 	{
 		printf("Error\n");
 		exit(1);
 	}
+	nbyte = atoi(argv[1]);
 	if (nbyte < 0)
 	{
 		printf("Error\n");
