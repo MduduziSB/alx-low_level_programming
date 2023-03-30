@@ -4,6 +4,19 @@
 #include <stddef.h>
 #include "lists.h"
 /**
+ * _strlen - computes string length
+ * @str: string
+ * Return: string length
+ */
+unsigned int _strlen(char *str)
+{
+	unsigned int  len = 0;
+
+	while (str[len])
+		len++;
+	return (len);
+}
+/**
  * add_node - adds a new node at the beggining of list
  * @head: list's head
  * @str: string
@@ -12,15 +25,12 @@
 list_t *add_node(list_t **head, const char *str)
 {
 	list_t *new;
-	unsigned int lenstr = 0;
 
 	new = malloc(sizeof(list_t));
-	if (new == NULL)
+	if (!new)
 		return (NULL);
 	new->str = strdup(str);
-	while (new->str[lenstr] != '\0')
-		lenstr++;
-	new->len = lenstr;
+	new->len = _strlen(new->str);
 	new->next = *head;
 	*head = new;
 	return (*head);
