@@ -2,25 +2,6 @@
 #include <stdlib.h>
 #include "main.h"
 /**
- * num_bit - computes the number of bits required
- * @n: decimal integer
- * Return: number of bits
- */
-unsigned int num_bit(unsigned long int n)
-{
-	unsigned int bit = 0;
-	unsigned long int num = n;
-
-	if (!(num) || num == 1)
-		return (1);
-	while (num)
-	{
-		num /= 2;
-		bit++;
-	}
-	return (bit);
-}
-/**
  * get_bit - finds the value of a bit at a given index
  * @n: decimal number
  * @index: bit index
@@ -28,24 +9,17 @@ unsigned int num_bit(unsigned long int n)
  */
 int get_bit(unsigned long int n, unsigned int index)
 {
-	unsigned int size = num_bit(n), i;
-	char *b;
-	unsigned long int num = n;
+	unsigned int i = index;
+	unsigned long int num = n, modf = 1;
 
-	b = malloc(size * sizeof(char));
-	if (!b)
-		return (-1);
-	i = 0;
-	if (!num)
-		b[i] = '0';
-	while (num)
+	while (i)
 	{
-		b[i] = (num % 2) + '0';
-		num /= 2;
-		i++;
+		modf *= 2;
+		i--;
 	}
-	if (index >= size)
-		return (-1);
-	return (b[index] - '0');
+	num = num | modf;
+	if (num == n)
+		return (1);
+	return (0);
 }
 

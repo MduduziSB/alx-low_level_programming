@@ -17,7 +17,7 @@ int clear_bit(unsigned long int *n, unsigned int index)
 		modf *= 2;
 		s--;
 	}
-	*n = (*n & (~modf));
+	*n = (*n & ~(modf));
 	if (num == *n)
 		return (-1);
 	return (1);
