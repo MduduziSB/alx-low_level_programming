@@ -10,14 +10,11 @@
 int clear_bit(unsigned long int *n, unsigned int index)
 {
 	unsigned int long modf = 1, num = *n;
-	unsigned int s = index;
 
-	while (s)
-	{
-		modf *= 2;
-		s--;
-	}
-	*n = (*n & ~(modf));
+	if (index > 63)
+		return (-1);
+	modf = modf << index;
+	*n = num & ~modf;
 	if (num == *n)
 		return (-1);
 	return (1);
