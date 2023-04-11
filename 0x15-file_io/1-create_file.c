@@ -27,7 +27,7 @@ int create_file(const char *filename, char *text_content)
 
 	if (!filename)
 		return (-1);
-	fcreate = open(filename, O_CREAT | O_RDWR | O_TRUNC);
+	fcreate = open(filename, O_CREAT | O_RDWR | O_TRUNC, 0600);
 	if (fcreate == -1)
 		return (-1);
 	fwrite = write(fcreate, text_content, strlen);
