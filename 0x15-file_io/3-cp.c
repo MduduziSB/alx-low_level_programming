@@ -8,18 +8,12 @@
 /**
  * _error_check - checks for errors suchs number arguments
  * @str: file names
- * @arg: number of arguments
  * @orig_file: integer
  * @cpy_file: integer
  * Return: nothing
  */
-void _error_check(char **str, int arg, int orig_file, int cpy_file)
+void _error_check(char **str, int orig_file, int cpy_file)
 {
-	if (arg != 3)
-	{
-		dprintf(STDERR_FILENO, "%s\n", "Usage: cp file_from file_to");
-		exit(97);
-	}
 	if (orig_file == -1)
 	{
 		dprintf(STDERR_FILENO, "%s%s\n", "Error: Can't read from file ", str[1]);
@@ -39,17 +33,23 @@ void _error_check(char **str, int arg, int orig_file, int cpy_file)
  */
 int main(int argc, char **argv)
 {
-	int orig_file, cpy_file, write_to_cpy, read_cont, close_file;
+	int orig_file, cpy_file, write_to_cpy, read_cont, close_file, MAX = MAX_SIZE;
 	char str[MAX_SIZE];
 
+	if (argc != 3)
+        {
+                dprintf(STDERR_FILENO, "%s\n", "Usage: cp file_from file_to");
+                exit(97);
+        }
 	orig_file = open(argv[1], O_RDONLY);
 	cpy_file = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC | O_APPEND, PERMS);
-	_error_check(argv, argc, orig_file, cpy_file);
-	while ((read_cont = read(orig_file, str, MAX_SIZE)) == MAX_SIZE)
+	_error_check(argv, orig_file, cpy_file);
+	while (MAX == MAX_SIZE)
 	{
-		_error_check(argv, argc, read_cont, cpy_file);
+		MAX = read_cont = read(orig_file, str, MAX_SIZE);
+		_error_check(argv, read_cont, cpy_file);
 		write_to_cpy = write(cpy_file, str, MAX_SIZE);
-		_error_check(argv, argc, read_cont, write_to_cpy);
+		_error_check(argv, read_cont, write_to_cpy);
 	}
 	close_file = close(orig_file);
 	if (close_file == -1)
