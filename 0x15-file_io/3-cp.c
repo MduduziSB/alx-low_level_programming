@@ -33,23 +33,24 @@ void _error_check(char **str, int orig_file, int cpy_file)
  */
 int main(int argc, char **argv)
 {
-	int orig_file, cpy_file, write_to_cpy, read_cont, close_file, MAX = MAX_SIZE;
+	int orig_file, cpy_file, write_to_cpy, read_cont, close_file;
 	char str[MAX_SIZE];
 
 	if (argc != 3)
-        {
-                dprintf(STDERR_FILENO, "%s\n", "Usage: cp file_from file_to");
-                exit(97);
-        }
+	{
+		dprintf(STDERR_FILENO, "%s\n", "Usage: cp file_from file_to");
+		exit(97);
+	}
 	orig_file = open(argv[1], O_RDONLY);
 	cpy_file = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC | O_APPEND, PERMS);
 	_error_check(argv, orig_file, cpy_file);
-	while (MAX == MAX_SIZE)
+	while ((read_cont = read(orig_file, str, MAX_SIZE)) > 0)
 	{
-		MAX = read_cont = read(orig_file, str, MAX_SIZE);
-		_error_check(argv, read_cont, cpy_file);
+		if (read_cont == -1)
+			_error_check(argv, read_cont, cpy_file);
 		write_to_cpy = write(cpy_file, str, MAX_SIZE);
-		_error_check(argv, read_cont, write_to_cpy);
+		if (write_to_cpy == -1)
+			_error_check(argv, read_cont, write_to_cpy);
 	}
 	close_file = close(orig_file);
 	if (close_file == -1)
