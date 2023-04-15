@@ -3,8 +3,6 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include "main.h"
-#define PERMS 0664
-#define MAX_SIZE 1024
 /**
  * _error_check - checks for errors suchs number arguments
  * @str: file names
@@ -34,34 +32,34 @@ void _error_check(char **str, int orig_file, int cpy_file)
 int main(int argc, char **argv)
 {
 	int orig_file, cpy_file, write_to_cpy, read_cont, close_file;
-	char str[MAX_SIZE];
+	char str[1024];
 
 	if (argc != 3)
 	{
-		dprintf(STDERR_FILENO, "%s\n", "Usage: cp file_from file_to");
+		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
 	orig_file = open(argv[1], O_RDONLY);
-	cpy_file = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC | O_APPEND, PERMS);
+	cpy_file = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC | O_APPEND, 0664);
 	_error_check(argv, orig_file, cpy_file);
-	while ((read_cont = read(orig_file, str, MAX_SIZE)) > 0)
+	while ((read_cont = read(orig_file, str, 1024)) > 0)
 	{
 		if (read_cont == -1)
 			_error_check(argv, read_cont, cpy_file);
-		write_to_cpy = write(cpy_file, str, MAX_SIZE);
+		write_to_cpy = write(cpy_file, str, read_cont);
 		if (write_to_cpy == -1)
 			_error_check(argv, read_cont, write_to_cpy);
 	}
 	close_file = close(orig_file);
 	if (close_file == -1)
 	{
-		dprintf(STDERR_FILENO, "%s %d\n", "Error: Can't close fd", orig_file);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", orig_file);
 		exit(100);
 	}
 	close_file = close(cpy_file);
 	if (close_file == -1)
 	{
-		dprintf(STDERR_FILENO, "%s %d\n", "Error: Can't close fd", cpy_file);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", cpy_file);
 		exit(100);
 	}
 	return (0);
