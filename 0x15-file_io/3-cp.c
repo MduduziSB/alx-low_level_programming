@@ -42,14 +42,14 @@ int main(int argc, char **argv)
 	orig_file = open(argv[1], O_RDONLY);
 	cpy_file = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC | O_APPEND, 0664);
 	_error_check(argv, orig_file, cpy_file);
-	while ((read_cont = read(orig_file, str, 1024)))
+	while ((read_cont = read(orig_file, str, 1024)) > 0)
 	{
-		if (read_cont == -1)
-			_error_check(argv, read_cont, cpy_file);
 		write_to_cpy = write(cpy_file, str, read_cont);
 		if (write_to_cpy == -1)
 			_error_check(argv, read_cont, write_to_cpy);
 	}
+	if (read_cont == -1)
+		_error_check(argv, read_cont, cpy_file);
 	close_file = close(orig_file);
 	if (close_file == -1)
 	{
