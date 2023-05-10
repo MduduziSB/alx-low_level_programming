@@ -38,15 +38,16 @@ int main(int argc, char **argv)
 	read_cont = read(orig_file, str, 1024);
 	if (orig_file == -1 || read_cont == -1)
 		_error_check(error_msg1, argv[1], ex_status1);
-	cpy_file = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC | O_APPEND, 0664);
+	cpy_file = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
 
 	do {
 		write_to_cpy = write(cpy_file, str, read_cont);
-		if (write_to_cpy == -1 || cpy_file == -1)
+		if (!read_cont || write_to_cpy == -1 || cpy_file == -1)
 			_error_check(error_msg2, argv[2], ex_status2);
 		read_cont = read(orig_file, str, 1024);
 		if (orig_file == -1 || read_cont == -1)
 			_error_check(error_msg1, argv[1], ex_status1);
+		cpy_file = open(argv[2], O_WRONLY | O_APPEND);
 	} while (read_cont > 0);
 	close_file = close(orig_file);
 	if (close_file == -1)
