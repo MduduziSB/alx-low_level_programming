@@ -8,38 +8,44 @@
  */
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
-	unsigned long int index_ascii;
-	hash_node_t *new;
+	unsigned long int index;
+	hash_node_t *new, *ptr;
 
 	if (!key[0] || !ht || !value || !key)
 		return (0);
-
+	index = key_index((unsigned char *)key, ht->size);
+	ptr = ht->array[index];
+	while (ptr != NULL)
+	{
+		if (strcmp(ptr->key, key) == 0)
+		{
+			free(ptr->value);
+			ptr->value = strdup(value);
+			if (ptr->value == NULL)
+				return (0);
+			return (1);
+		}
+		ptr = ptr->next;
+	}
 	new = malloc(sizeof(hash_node_t));
 	if (!new)
 		return (0);
-	new->key = malloc(sizeof(key) + 1);
-	if (!new->key)
-	{
-		free(new);
-		return (0);
-	}
-	strcpy(new->key, key);
+	new->key = strdup(key);
 	new->value = strdup(value);
-	if (!new->value)
+	if (!new->key || !new->value)
 	{
-		free(new->key);
 		free(new);
 		return (0);
 	}
+	new->value = strdup(value);
 
-	index_ascii = hash_djb2((unsigned char *)key);
-	if (ht->array[index_ascii] == NULL)
+	if (ht->array[index] == NULL)
 	{
 		new->next = NULL;
-		ht->array[index_ascii] = new;
+		ht->array[index] = new;
 	}
 	else
-		new->next = ht->array[index_ascii];
+		new->next = ht->array[index];
 	return (1);
 }
 
