@@ -1,0 +1,5 @@
+# -*- Makefile -*-
+all: school
+
+school : main.c schoo.c
+	cc -o main.c school.c
