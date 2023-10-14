@@ -5,7 +5,7 @@
  * @list: Pointer to the head of the list to search in.
  * @size: Number of nodes in the list.
  * @value: The value to search for.
- * Return: Pointer to the first node where value is located, or NULL if not found.
+ * Return: Pointer to the first node where value is located, NULL otherwise.
  */
 listint_t *jump_list(listint_t *list, size_t size, int value)
 {
@@ -16,11 +16,9 @@ listint_t *jump_list(listint_t *list, size_t size, int value)
 
 	if (!list)
 		return (NULL);
-	
 	ptr = list;
 	prev = NULL;
 	printf("Value checked at index [%lu] = [%d]\n", ptr->index, ptr->n);
-	
 	while (ptr->n < value)
 	{
 		prev = ptr;
@@ -37,8 +35,8 @@ listint_t *jump_list(listint_t *list, size_t size, int value)
 	{
 		printf("%s [%lu] = [%d]\n", s1, prev->index, prev->n);
 		if (prev->n == value)
-			return prev;
+			return (prev);
 		prev = prev->next;
 	}
-	return NULL;
+	return (NULL);
 }
