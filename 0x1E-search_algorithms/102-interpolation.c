@@ -18,10 +18,10 @@ int interpolation_search(int *array, size_t size, int value)
 		m = (l + (((double)(h - l) / (array[h] - array[l]))
 					* (value - array[l])));
 		if (m < size)
-			printf("%s [%ld] = [%d]\n", str, m, array[m]);
+			printf("%s[%ld] = [%d]\n", str, m, array[m]);
 		else
 		{
-			printf("%s [%ld] is out of range\n", str, m);
+			printf("%s[%ld] is out of range\n", str, m);
 			break;
 		}
 		if (array[m] == value)
